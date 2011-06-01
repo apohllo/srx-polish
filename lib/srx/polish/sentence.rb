@@ -3,7 +3,7 @@ require 'stringio'
 require 'term/ansicolor'
 module SRX
   module Polish
-  RULES =
+    RULES =
 [["(?:\\badw\\.\\s)|(?:\\bafr\\.\\s)|(?:\\bakad\\.\\s)|(?:\\b[Aa]l\\.\\s)|(?:\\bam\\.\\s)|(?:\\bamer\\.\\s)|(?:\\barch\\.\\s)|(?:\\b[Aa]rt\\.\\s)|(?:\\bartyst\\.\\s)|(?:\\bastr\\.\\s)|(?:\\baustr\\.\\s)|(?:\\bbałt\\.\\s)|(?:\\bbdb\\.\\s)|(?:\\bbł\\.\\s)|(?:\\bbm\\.\\s)|(?:\\bbr\\.\\p{Pe}?\\s)|(?:\\bbry[gt]\\.\\s)|(?:\\bcentr\\.\\s)|(?:\\bces\\.\\s)|(?:\\bchem\\.\\s)|(?:\\bchiń\\.\\s)|(?:\\bchir\\.\\s)|(?:\\bc\\.k\\.\\s)|(?:\\bc\\.o\\.\\s)|(?:\\bcyg\\.\\s)|(?:\\bcyw\\.\\s)|(?:\\bcyt\\.\\s)|(?:\\bczes\\.\\s)|(?:\\bczw\\.\\s)|(?:\\b[Cc]d\\.\\s)|(?:\\bczyt\\.\\s)|(?:\\bćw\\.\\s)|(?:\\bćwicz\\.\\s)|(?:\\bdaw\\.\\s)|(?:\\bdcn\\.\\s)|(?:\\bdekl\\.\\s)|(?:\\bdemokr\\.\\s)|(?:\\bdet\\.\\s)|(?:\\bdiec\\.\\s)|(?:\\bdł\\.\\s)|(?:\\bdn\\.\\s)|(?:\\bdo[tlp]\\.\\s)|(?:\\bdost\\.\\s)|(?:\\bdosł\\.\\s)|(?:\\bh\\.c\\.\\s)|(?:\\bds\\.\\s)|(?:\\bdst\\.\\s)|(?:\\bduszp\\.\\s)|(?:\\bdypl\\.\\s)|(?:\\begz\\.\\s)|(?:\\bekol\\.\\s)|(?:\\bekon\\.\\s)|(?:\\belektr\\.\\s)|(?:\\bem\\.\\s)|(?:\\bew\\.\\s)|(?:\\bfab\\.\\s)|(?:\\bfarm\\.\\s)|(?:\\bfot\\.\\s)|(?:\\bfr\\.\\s)|(?:\\bgat\\.\\s)|(?:\\bgastr\\.\\s)|(?:\\bgeogr\\.\\s)|(?:\\bgeol\\.\\s)|(?:\\bgimn\\.\\s)|(?:\\bgłęb\\.\\s)|(?:\\bgm\\.\\s)|(?:\\bgodz\\.\\s)|(?:\\bgórn\\.\\s)|(?:\\bgosp\\.\\s)|(?:\\bgr\\.\\s)|(?:\\bgram\\.\\s)|(?:\\bhist\\.\\s)|(?:\\bhiszp\\.\\s)|(?:\\b[Hh]r\\.\\s)|(?:\\bhot\\.\\s)|(?:\\bid\\.\\s)|(?:\\bin\\.\\s)|(?:\\bim\\.\\s)|(?:\\biron\\.\\s)|(?:\\bjn\\.\\s)|(?:\\bkard\\.\\s)|(?:\\bkat\\.\\s)|(?:\\bkatol\\.\\s)|(?:\\bk\\.k\\.\\s)|(?:\\bkk\\.\\s)|(?:\\bko?l\\.\\s)|(?:\\bk\\.p\\.a\\.\\s)|(?:\\bkpc\\.\\s)|(?:\\bk\\.p\\.c\\.\\s)|(?:\\bkpt\\.\\s)|(?:\\bkr\\.\\s)|(?:\\bk\\.r\\.\\s)|(?:\\bkrak\\.\\s)|(?:\\bk\\.r\\.o\\.\\s)|(?:\\bkryt\\.\\s)|(?:\\bkult\\.\\s)|(?:\\blaic\\.\\s)|(?:\\błac\\.\\s)|(?:\\bniem\\.\\s)|(?:\\bwoj\\.\\s)|(?:\\b[Nn][bp]\\.\\s)|(?:\\bpo[lw]\\.\\s)|(?:\\bm\\.in\\.\\s)|(?:\\b[Pp][ts]\\.\\s)|(?:\\bcdn\\.\\s)|(?:\\bjw\\.\\s)|(?:\\b[Rr]y[cs]\\.\\s)|(?:\\btj\\.\\s)|(?:\\b[Tt]zw\\.\\s)|(?:\\btzn\\.\\s)|(?:\\bzob\\.\\s)|(?:\\bang\\.\\s)|(?:\\bu[lb]\\.\\s?)|(?:\\bp[wnl]\\.\\s)|(?:\\bal\\.\\s)|(?:\\bk\\.\\s)|(?:\\bn\\.\\s)",
   nil,
   false],
@@ -86,10 +86,11 @@ module SRX
   true],
  ["(?:[\\.!?…]['»\"”\\p{Pe}]*)", "\\p{Lu}[^\\p{Lu}\\.]", true],
  ["(?:\\s\\p{L}[\\.!?…]\\s)", "\\p{Lu}\\p{Ll}", true],
- ["(?:\\r?\\n)|(?:\\r?\\n\\s*\\r?\\n[\\t]*)", nil, true]]
+ ["(?:\\r?\\n\\s*\\r?\\n[\\t]*)", nil, true]]
     BEFORE_RE = /(?:#{RULES.map{|s,e,v| "(#{s})"}.join("|")})\Z/m
     REGEXPS = RULES.map{|s,e,v| [/(#{s})\Z/m,/\A(#{e})/m,v] }
     FIRST_CHAR = /\A./m
+
 
     class Sentence
       attr_accessor :input
@@ -107,6 +108,7 @@ module SRX
         buffer_length = 10
         sentence = ""
         before_buffer = ""
+        @input.pos = 0
         after_buffer = buffer_length.times.map{|i| @input.readchar}.join("")
         matched_rule = nil
         while(!@input.eof?) do

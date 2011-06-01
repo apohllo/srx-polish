@@ -24,7 +24,7 @@ Standard rubygems installation:
 The library defines the SRX::Polish::Sentence class allowing to iterate
 over the matched sentences:
 
-  require 'srx/polish'
+  require 'srx/polish/sentence'
   
   text =<<-END
     Kiedy spotkałem p. Wojtka miał na sobie krótkie spodnie. Na s. 10 książki

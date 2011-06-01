@@ -1,0 +1,4 @@
+.*.sw?
+*.gem
+pkg
+work

@@ -95,8 +95,6 @@ module SRX
       attr_accessor :input
       attr_writer :debug
 
-      include Enumerator
-
       def initialize(text=nil)
         if text.is_a?(String)
           @input = StringIO.new(text,"r:utf-8")

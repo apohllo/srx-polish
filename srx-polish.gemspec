@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "srx-polish"
-  s.version     = "0.1.0"
+  s.version     = "0.1.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Aleksander Pohl"]
   s.email       = ["apohllo@o2.pl"]
@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+
+  s.add_dependency("term-ansicolor", ["~> 1.0.5"])
 end

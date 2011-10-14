@@ -4,8 +4,8 @@
 
 = DESCRIPTION
 
-'srx-polish' is a Ruby library containint Polish sentence segmentation rules
-based on SRX rules defined by Marcin Miłkowski: 
+'srx-polish' is a Ruby library containing Polish sentence and word segmentation rules.
+The sentence segementation rules are based on rules defined by Marcin Miłkowski: 
 http://morfologik.blogspot.com/2009/11/talking-about-srx-in-lt-during-ltc.html
 
 = FEATURES/PROBLEMS
@@ -24,19 +24,44 @@ Standard rubygems installation:
 The library defines the SRX::Polish::Sentence class allowing to iterate
 over the matched sentences:
 
-  require 'srx/polish/sentence'
+  require 'srx/polish/sentence_splitter'
   
   text =<<-END
     Kiedy spotkałem p. Wojtka miał na sobie krótkie spodnie. Na s. 10 książki
     sprawa jest szczegółowo opisana.
   END
 
-  sentences = SRX::Polish::Sentence.new(text)
-  sentences.each do |sentence|
+  splitter = SRX::Polish::SentenceSplitter.new(text)
+  splitter.each do |sentence|
     puts sentence.gsub(/\n|\r/,"")
   end
   # Kiedy spotkałem p. Wojtka miał na sobie krótkie spodnie.
   # Na s. 10 książki sprawa jest szczegółowo opisana.
+
+  require 'srx/polish/word_splitter'
+
+  sentence = "Ala ma kota za 5zł i 10$."
+  splitter = SRX::Polish::WordSplitter.new(sentence)
+  splitter.each do |word,type|
+    puts "'#{word}' #{type}"
+  end
+  # 'Ala' word
+  # ' ' other
+  # 'ma' word
+  # ' ' other
+  # 'kota' word
+  # ' ' other
+  # 'za' word
+  # ' ' other
+  # '5' number
+  # 'zł' word
+  # ' ' other
+  # 'i' word
+  # ' ' other
+  # '10' number
+  # '$' graph
+  # '.' punct
+
 
 == LICENSE
 

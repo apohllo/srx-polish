@@ -55,8 +55,9 @@ module SRX
     REGEXPS = RULES.map{|s,e,v| [/(#{s})\Z/m,/\A(#{e})/m,v] }
     FIRST_CHAR = /\A./m
 
+    class SentenceSplitter
+      include Enumerable
 
-    class Sentence
       attr_accessor :input
       attr_writer :debug
 
@@ -69,6 +70,7 @@ module SRX
       end
 
       def each
+        raise "Invalid argument - text is nil" if @input.nil?
         buffer_length = 10
         sentence = ""
         before_buffer = ""

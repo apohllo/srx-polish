@@ -1,0 +1,8 @@
+0.2.0
+- API change - Sentence changed into SentenceSplitter
+- Word segmentation rules added
+- Basic features added
+0.1.1
+- Dependency on Term::Ansicolor added
+0.1.0
+- First release of sentence segmentation rules

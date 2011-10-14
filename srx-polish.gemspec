@@ -3,13 +3,13 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "srx-polish"
-  s.version     = "0.1.1"
+  s.version     = "0.2.0"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Aleksander Pohl"]
   s.email       = ["apohllo@o2.pl"]
   s.homepage    = "http://github.com/apohllo/srx2ruby"
-  s.summary     = %q{Polish sentence segmentation rules.}
-  s.description = %q{Polish sentence segmentation rules based on Marcin Miłkowski's SRX rules.}
+  s.summary     = %q{Polish sentence and word segmentation rules.}
+  s.description = %q{Polish sentence and word segmentation rules. The sentence segmentation rules are based on Marcin Miłkowski's SRX rules.}
 
   s.rubyforge_project = "srx-polish"
   s.has_rdoc = false

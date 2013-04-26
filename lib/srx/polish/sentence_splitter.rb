@@ -67,6 +67,7 @@ module SRX
         else
           @input = text
         end
+        @debug = false
       end
 
       def each

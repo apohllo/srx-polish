@@ -77,12 +77,11 @@ module SRX
         before_buffer = ""
         @input.pos = 0
         after_buffer = buffer_length.times.map{|i| @input.readchar}.join("")
-        matched_rule = nil
         while(!@input.eof?) do
           matched_before = BEFORE_RE.match(before_buffer)
           break_detected = false
           if matched_before
-            start_index = (matched_before.size - 1).times.find do |index|
+            (matched_before.size - 1).times.find do |index|
               matched_before[index+1]
             end
             if @debug

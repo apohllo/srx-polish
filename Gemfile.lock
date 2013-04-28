@@ -1,0 +1,16 @@
+PATH
+  remote: .
+  specs:
+    srx-polish (0.2.1)
+      term-ansicolor (~> 1.0.5)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    term-ansicolor (1.0.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  srx-polish!

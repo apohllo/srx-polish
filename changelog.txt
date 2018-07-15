@@ -1,3 +1,6 @@
+0.3.0
+- rule update (as of 07/2018)
+- all rules are in separate file to reduce code clutter
 0.2.1
 - fix extension of README (was md, should be rdoc)
 0.2.0

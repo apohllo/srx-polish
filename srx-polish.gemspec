@@ -3,9 +3,9 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "srx-polish"
-  s.version     = "0.2.1"
+  s.version     = "0.3.0"
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Aleksander Pohl"]
+  s.authors     = ["Aleksander Smywiński-Pohl"]
   s.email       = ["apohllo@o2.pl"]
   s.homepage    = "http://github.com/apohllo/srx2ruby"
   s.summary     = %q{Polish sentence and word segmentation rules.}

@@ -12,15 +12,15 @@ end
 
 Then /^the following segments should be detected$/ do |table|
   table.hashes.zip(@splitter.to_a).each do |expected,returned|
-    returned[0].should == expected[:segment].gsub(/'/,"")
-    returned[1].should == expected[:type].to_sym
+    expect(returned[0]).to eq expected[:segment].gsub(/'/,"")
+    expect(returned[1]).to eq expected[:type].to_sym
   end
 end
 
 Then /^the following non-blank segments should be detected$/ do |table|
   segments = @splitter.select{|s| s[1] != :other}
   table.hashes.zip(segments).each do |expected,returned|
-    returned[0].should == expected[:segment].gsub(/'/,"")
-    returned[1].should == expected[:type].to_sym
+    expect(returned[0]).to eq expected[:segment].gsub(/'/,"")
+    expect(returned[1]).to eq expected[:type].to_sym
   end
 end

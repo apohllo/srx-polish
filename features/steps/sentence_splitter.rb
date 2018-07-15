@@ -12,6 +12,6 @@ end
 
 Then /^the following sentences should be detected$/ do |table|
   table.hashes.zip(@splitter.to_a).each do |expected,returned|
-    returned.gsub(/\s*\n/," ").strip.should == expected[:sentence]
+    expect(returned.gsub(/\s*\n/," ").strip).to eq expected[:sentence]
   end
 end
